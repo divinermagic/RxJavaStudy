@@ -21,17 +21,18 @@ import rx.schedulers.Schedulers;
 
 /**
  * RxJava的基础学习
+ * @author Magic
  */
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG_RxJava = "RxJava";
+    private static final String TAG_RX_JAVA = "RxJava";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //初始化Logger
-        Logger.init(TAG_RxJava).logLevel(LogLevel.FULL);
+        Logger.init(TAG_RX_JAVA).logLevel(LogLevel.FULL);
         // create01();
         // from02();
         // just03();
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Observer<String> observer = new Observer<String>() {
             @Override
             public void onCompleted() {
-                Log.i(TAG_RxJava, "观察者执行，onCompleted()");
+                Log.i(TAG_RX_JAVA, "观察者执行，onCompleted()");
             }
 
             @Override
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG_RxJava, "被观察者--》》向观察者发送数据：" + s);
+                Log.i(TAG_RX_JAVA, "被观察者--》》向观察者发送数据：" + s);
             }
         };
         /*被观测者.订阅(观察者)*/
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         Observer<String> observer = new Observer<String>() {
             @Override
             public void onCompleted() {
-                Log.i(TAG_RxJava, "观察者执行，onCompleted()");
+                Log.i(TAG_RX_JAVA, "观察者执行，onCompleted()");
             }
 
             @Override
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG_RxJava, "被观察者--》》向观察者发送数据：" + s);
+                Log.i(TAG_RX_JAVA, "被观察者--》》向观察者发送数据：" + s);
             }
         };
 
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         Observer<String> observer = new Observer<String>() {
             @Override
             public void onCompleted() {
-                Log.i(TAG_RxJava, "观察者执行，onCompleted()");
+                Log.i(TAG_RX_JAVA, "观察者执行，onCompleted()");
             }
 
             @Override
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG_RxJava, "被观察者--》》向观察者发送数据：" + s);
+                Log.i(TAG_RX_JAVA, "被观察者--》》向观察者发送数据：" + s);
             }
         };
         observable.subscribe(observer);
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         Action0 onCompletedAction = new Action0() {
             @Override
             public void call() {
-                Log.i(TAG_RxJava, "观察者：onCompletedAction");
+                Log.i(TAG_RX_JAVA, "观察者：onCompletedAction");
             }
         };
         /*可以订阅任何一个 或者 三个都可以*/
@@ -186,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG_RxJava, "Map-->:" + s);
+                Log.i(TAG_RX_JAVA, "Map-->:" + s);
             }
         };
 
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String s) {
-                        Log.i(TAG_RxJava, "Map-->:" + s);
+                        Log.i(TAG_RX_JAVA, "Map-->:" + s);
                     }
                 });
 
@@ -234,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
                 .flatMap(new Func1<Author, Observable<?>>() {
                     @Override
                     public Observable<?> call(Author author) {
-                        Log.i(TAG_RxJava, author.name);
+                        Log.i(TAG_RX_JAVA, author.name);
                         return Observable.from(author.Articles);
 
                     }
@@ -245,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void call(Object article) {
-                        Log.i(TAG_RxJava, article.toString());
+                        Log.i(TAG_RX_JAVA, article.toString());
                     }
                 });
     }
@@ -262,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        Log.i(TAG_RxJava, String.valueOf(integer));
+                        Log.i(TAG_RX_JAVA, String.valueOf(integer));
                     }
                 });
 
